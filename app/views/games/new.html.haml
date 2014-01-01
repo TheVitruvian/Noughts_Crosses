@@ -1,0 +1,9 @@
+.player-2
+  %h1 Game
+  = form_tag games_path do
+
+    .field
+      = label_tag 'Player 2 email: '
+      = text_field_tag :player_2
+    %br  
+    = submit_tag "Let's play"

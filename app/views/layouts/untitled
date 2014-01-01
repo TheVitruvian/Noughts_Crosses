@@ -1,0 +1,44 @@
+!!! 
+%html
+  %head
+    %title Noughts vs Crosses
+    = stylesheet_link_tag    "bootstrap", :media => "all"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+.container
+  .head
+    .banner 
+      %div.row 
+        %div.col-lg-4#header-image-jon= image_tag "oie_transparent_jon.png"
+        %h1.col-lg-4#main-title
+          %div NOUGHTS
+          %div VS
+          %div CROSSES
+        %div.col-lg-4#header-image-gerry= image_tag "oie_transparent_gerry.png"
+      #page
+
+    %nav.navbar
+      %ul
+        
+        %li
+          - if current_user
+            %p= link_to "#{current_user.name}'s Games", user_path(current_user.id)
+            %p= link_to 'Player vs Player', new_game_path
+            %p= link_to "Player vs Computer", games_path + '?player_2=CPU@willbeatyou.com', :method => :post
+          - else
+            %li
+              %p= link_to "Login", new_session_path
+            %li
+              %p= link_to "Sign up", new_user_path
+      .clear
+
+    %section#main
+  = yield
+  %footer
+  %br
+  %div.logout
+    - if current_user
+      = link_to 'Logout', logout_path, method: :delete
+

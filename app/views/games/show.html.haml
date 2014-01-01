@@ -1,0 +1,47 @@
+%h3.game-title= "Game number: #{@game.id} of all time!"
+%div.container
+  %div.row
+    %div.game-div
+      = form_for @game, :id => 'game-board', :class => 'game-board' do |f|
+        - if @game.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@game.errors.count, "error")} prohibited this game from being created:"
+            %ul
+              - @game.errors.full_messages.each do |msg|
+                %li= msg
+
+        - if @game.users.all.last.id != 1
+          - if (current_user == @game.player_1 && @game.player_one_go) || (current_user == @game.player_2 && !@game.player_one_go) || @game.winner != nil
+            - if @game.winner != nil
+              %h3= "#{@game.winner.upcase} wins"
+            - if @game.play_count == 10
+              %h3= "Is draw"
+            -else 
+              - @array_board.each_with_index do |x, xi|
+                %p.game-board
+                - x.each_with_index do |z, zi|
+                  -if @array_board[xi][zi] == :y
+                    = link_to "?", make_move_game_path + "?row=#{xi}&col=#{zi}", method: :put, :class => 'player-move'
+                  -else
+                    = "#{@array_board[xi][zi]}"
+          -else
+            %h3= "We're waiting for your opponent!"
+            %form
+            %input{onclick: "history.go(0)", type: "button", value: "See if they've moved yet"}/
+        - else
+          - if @game.winner != nil
+            %h3= "#{@game.winner} wins"
+          - if @game.play_count == 10
+            %h3= "Is draw"
+          -else 
+            - @array_board.each_with_index do |x, xi|
+              %p
+              - x.each_with_index do |z, zi|
+                -if @array_board[xi][zi] == :y
+                  = link_to "?", make_move_game_path + "?row=#{xi}&col=#{zi}", method: :put, :class => 'player-move'
+                -else
+                  = "#{@array_board[xi][zi]}"
+
+
+
+

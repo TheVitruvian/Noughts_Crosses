@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  font-family: "PSP2", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  text-color: white;
+  background-color: black;
+  background-size: 1280px 800px;
+  background-repeat: repeat;
+  background-image:url('-Love-Multicolor-Spectrum-8bit-Black-Background-Fresh-New-Hd-Wallpaper--.png');
+  
+}
+
+@font-face {
+  font-family: 'PSP2';
+  src: url('fonts/PressStart2P.ttf');
+}
+
+#main-title {
+  font-family: 'PSP2';
+  color: #E30304;
+  padding-top: 25px;
+}
+
+#header-image-gerry {
+    opacity: 0.5;
+    float: right;
+    height: 66px;
+  &:hover{
+    opacity: 1;
+  }
+}
+
+#header-image-jon {
+    opacity: 0.5;
+    float: left;
+  &:hover{
+    opacity: 1;
+  }
+}
+
+#menu-bar{
+  display: inline;
+  width: 500px;
+}
+
+p,
+h1
+h2,
+h3,
+h4,
+h5,
+h6,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: 'PSP2', Helvetica, Arial, sans-serif;
+}
+
+.avatar{
+  border-radius: 500px;
+  border-style: solid;
+  color: white;
+}
+
+.logout{
+  text-align: right;
+  padding-right: 155px;
+}
+
+.user-details{
+  padding-left: 40px;
+}
